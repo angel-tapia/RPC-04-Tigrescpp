@@ -56,14 +56,14 @@ ld compute_minimum(){
 }
 
 ld round_num(ld a){
-    a*=10;
+    a*=100;
     ld b = a - int(a);
     a -= b;
     lli d = a;
     if(d%10 >= 5) a += 10 - d % 10;
     else a  = a  - d % 10;
 
-    return a / 10;
+    return a / 100;
 }
 
 int main(){
