@@ -25,7 +25,7 @@ double computeArea(const vector<PT> &p) {
   return fabs(ComputeSignedArea(p));
 }
 
-const int MaxN = 10;
+const int MaxN = 20;
 int N;
 PT points[MaxN];
 double ans = 101020120;
@@ -101,6 +101,10 @@ int main(){
       }
     }
   }
+
+  vector < vector <PT> > vacio;
+
+  bruta(0, -1, vacio);
 
   printf("%.1f", &ans);
 
