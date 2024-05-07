@@ -15,11 +15,9 @@ void djikistra(vector<vector<pair<long long, long long>>>& graph, long long sour
         pq.pop();
 
         for(auto next : graph[act.second]){
-            else{
-                if(d[next.second] >= d[act.second] + next.first){
-                    d[next.second] = d[act.second] + next.first;
-                    pq.push({-next.first, next.second});
-                }
+            if(d[next.second] >= d[act.second] + next.first){
+                d[next.second] = d[act.second] + next.first;
+                pq.push({-next.first, next.second});
             }
         }
     }
