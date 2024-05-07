@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void djikistra(vector<vector<pair<long long, long long>>>& graph, long long source, vector<int>& vis, vector<long long>& d){
+void djikistra(vector<vector<pair<long long, long long>>>& graph, long long source, vector<long long>& d){
     priority_queue<pair<long long, long long>> pq;
 
     d[source] = 0;
@@ -13,21 +13,20 @@ void djikistra(vector<vector<pair<long long, long long>>>& graph, long long sour
     while(!pq.empty()){
         act = pq.top();
         pq.pop();
-        vis[act.second] = 1;
 
         for(auto next : graph[act.second]){
-            if(vis[next.second]) continue;
             else{
                 if(d[next.second] >= d[act.second] + next.first){
                     d[next.second] = d[act.second] + next.first;
+                    pq.push({-next.first, next.second});
                 }
-                pq.push({-next.first, next.second});
             }
         }
     }
     for(int i = 0; i < d.size(); i++){
         if(d[i] < 0) {
-            cout<<i + 1<<"\n";
+            if(i==d.size()-1) cout<<i+1;
+            else cout<<i + 1<<"\n";
         }
     }
 }
@@ -47,9 +46,8 @@ int main()
             graph[aux1-1].push_back({-aux_time, aux2-1});
         }
     }
-    vector<int> vis(n, 0);
     vector<long long> d(n, INT_MAX);
-    djikistra(graph, 0, vis, d);
+    djikistra(graph, 0, d);
 
     return 0;
 }
