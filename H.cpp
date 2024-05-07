@@ -23,12 +23,6 @@ void djikistra(vector<vector<pair<long long, long long>>>& graph, long long sour
             }
         }
     }
-    for(int i = 0; i < d.size(); i++){
-        if(d[i] < 0) {
-            if(i==d.size()-1) cout<<i+1;
-            else cout<<i + 1<<"\n";
-        }
-    }
 }
 
 int main()
@@ -48,6 +42,13 @@ int main()
     }
     vector<long long> d(n, INT_MAX);
     djikistra(graph, 0, d);
+
+    for(int i = 0; i < d.size(); i++){
+        if(d[i] < 0) {
+            if(i==d.size()-1) cout<<i+1;
+            else cout<<i + 1<<"\n";
+        }
+    }
 
     return 0;
 }
