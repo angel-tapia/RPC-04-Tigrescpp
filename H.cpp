@@ -20,7 +20,7 @@ void djikistra(vector<vector<pair<long long, long long>>>& graph, long long sour
 
             if(d[next.second] >= d[act.second] + next.first){
                 d[next.second] = d[act.second] + next.first;
-                pq.push({-next.first, next.second});
+                pq.push({-d[next.second], next.second});
             }
 
         }
