@@ -13,6 +13,7 @@ void djikistra(vector<vector<pair<long long, long long>>>& graph, long long sour
     while(!pq.empty()){
         act = pq.top();
         pq.pop();
+
         if(vis[act.second]) continue;
         vis[act.second] = 1;
 
