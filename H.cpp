@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
+#define INF 1e9
+#define lli long long int
 
 using namespace std;
+
 
 void djikistra(vector<vector<pair<long long, long long>>>& graph, long long source, vector<int>& vis, vector<long long>& d){
     priority_queue<pair<long long, long long>> pq;
@@ -8,17 +11,15 @@ void djikistra(vector<vector<pair<long long, long long>>>& graph, long long sour
     d[source] = 0;
     pq.push({0, source});
 
-    pair<long long, long long> act;
+    pair<lli, lli> act;
 
     while(!pq.empty()){
         act = pq.top();
         pq.pop();
-        if(vis[act.second]) continue;
-        vis[act.second] = 1;
 
         for(auto next : graph[act.second]){
 
-            if(d[next.second] >= d[act.second] + next.first){
+            if(d[next.second] > d[act.second] + next.first){
                 d[next.second] = d[act.second] + next.first;
                 pq.push({-d[next.second], next.second});
             }
